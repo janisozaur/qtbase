@@ -23,5 +23,5 @@ jobs:
     - name: ls stuff
       if: always()
       run: |
-          ls ..
-          ls ../bin
+          ls
+          ls bin
