@@ -20,3 +20,11 @@ jobs:
         ls "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build"
         ls "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
         ./build_qt.bat
+    - name: ls stuff
+      if: always()
+      run: |
+          ls c:
+          ls c:/Qt
+          ls c:/Qt/5.dev
+          ls c:/Qt/5.dev/msvc2017_64
+          ls c:/Qt/5.dev/msvc2017_64/bin
