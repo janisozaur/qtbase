@@ -276,7 +276,9 @@ cd ..
 
 rem Generate qt.conf
 
-> "%QTDIR%\bin\qt.conf" (
+set QTCONFFILE=%QTDIR%\bin\qt.conf
+
+> "%QTCONFFILE%" (
     @echo [EffectivePaths]
     @echo Prefix=..
     @echo [Paths]
@@ -284,7 +286,7 @@ rem Generate qt.conf
     @echo HostSpec=%PLATFORM%
 )
 if not "%QTDIR%" == "%QTSRC%" (
-    >> "%QTDIR%\bin\qt.conf" (
+    >> "%QTCONFFILE%" (
         @echo [EffectiveSourcePaths]
         @echo Prefix=%QTSRC:\=/%
     )
@@ -293,4 +295,8 @@ if not "%QTDIR%" == "%QTSRC%" (
 rem Launch qmake-based configure
 
 cd "%TOPQTDIR%"
-"%QTDIR%\bin\qmake.exe" "%TOPQTSRC%" -- %ARGS%
+if "%CFG_HOST_QT_TOOLS_PATH%" == "" (
+	"%QTDIR%\bin\qmake.exe" "%TOPQTSRC%" -- %ARGS%
+) else (
+	"%CFG_HOST_QT_TOOLS_PATH%\qmake.exe" -qtconf "%QTCONFFILE%" "%TOPQTSRC%" -- %ARGS%
+)
