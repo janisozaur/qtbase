@@ -23,8 +23,5 @@ jobs:
     - name: ls stuff
       if: always()
       run: |
-          ls c:
-          ls c:/Qt
-          ls c:/Qt/5.dev
-          ls c:/Qt/5.dev/msvc2017_64
-          ls c:/Qt/5.dev/msvc2017_64/bin
+          ls ..
+          ls ../bin
