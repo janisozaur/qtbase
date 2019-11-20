@@ -1,0 +1,17 @@
+name: arm64-qt
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: show git head
+      run: git --no-pager show HEAD
+    - name: install libs
+      run: |
+        ls
+        ./build_qt.bat
