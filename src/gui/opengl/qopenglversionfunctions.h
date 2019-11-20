@@ -67,6 +67,12 @@
 #undef MemoryBarrier
 #endif
 
+// Windows had the smart idea of using a #define MemoryBarrier
+// https://msdn.microsoft.com/en-us/library/windows/desktop/ms684208(v=vs.85).aspx
+#if defined(Q_OS_WIN) && defined(MemoryBarrier)
+#undef MemoryBarrier
+#endif
+
 QT_BEGIN_NAMESPACE
 
 class QOpenGLContext;

@@ -96,6 +96,9 @@ goto doneargs
     if /i "%~1" == "-make-tool" goto maketool
     if /i "%~1" == "--make-tool" goto maketool
 
+    if /i "%~1" == "-external-hostbindir" goto hosttools
+    if /i "%~1" == "--external-hostbindir" goto hosttools
+
 :nextarg
     shift
     goto doargs
@@ -142,6 +145,11 @@ goto doneargs
 :maketool
     shift
     set MAKE=%~1
+    goto nextarg
+
+:hosttools
+    shift
+    set CFG_HOST_QT_TOOLS_PATH=%~1
     goto nextarg
 
 :doneargs
